@@ -60,7 +60,7 @@ Implement the following classes, interface, and codes (you can decide which file
 
 4. Interface Transaction
 
-    - It has 2 properties, a string called `name` and a Date called `date`. `date` refers to the time that transaction has been created.
+    - It has 2 properties, a number called `amount` and a Date called `date`. `date` refers to the time that transaction has been created.
 
 Run the following codes in `index.ts`and share your results and findings in the Slack channel
 
