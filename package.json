@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "watch": "nodemon src/index.ts",
-    "build": "tsc --watch"
+    "watch:index": "nodemon src/index.ts",
+    "watch:bank": "nodemon src/bank.ts",
+    "build": "tsc"
   },
   "author": "",
   "license": "ISC",
