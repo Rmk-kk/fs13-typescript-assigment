@@ -29,19 +29,14 @@ class Customer {
         return currBalance;
     }
     addTransaction(amount) {
-        try {
-            this.transactions.push({ amount, date: new Date() });
-            if (amount > 0) {
-                console.log(`Successfully added ${amount} to ${this.name}'s(id:${this.id}) account`);
-            }
-            else if (amount < 0) {
-                console.log(`Successfully withdrew ${String(amount).substring(1)} from ${this.name}'s(id:${this.id}) account`);
-            }
-            return true;
+        this.transactions.push({ amount, date: new Date() });
+        if (amount > 0) {
+            console.log(`Successfully added ${amount} to ${this.name}'s(id:${this.id}) account`);
         }
-        catch (e) {
-            throw new Error();
+        else if (amount < 0) {
+            console.log(`Successfully withdrew ${String(amount).substring(1)} from ${this.name}'s(id:${this.id}) account`);
         }
+        return true;
     }
 }
 exports.Customer = Customer;

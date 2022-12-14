@@ -14,23 +14,19 @@ export class Branch {
     }
 
     addCustomer(customer:Customer):boolean {
-        try {
-            let result = this.customers.find(person => person.getId() === customer.getId());
-            if(result) {
-                console.log(`Customer ${customer.getName()}, id: ${customer.getId()} already exist`);
-                return false
-            } else {
-                this.customers.push(customer);
-                console.log(`Customer ${customer.getName()}, id-${customer.getId()} was successfully added to branch '${this.name}'`);
-                return true
-            }
-        } catch (e) {
-            throw new Error()
+        let result = this.findCustomer(customer.getId());
+        if(result) {
+            console.log(`Customer ${customer.getName()}, id: ${customer.getId()} already exist`);
+            return false
+        } else {
+            this.customers.push(customer);
+            console.log(`Customer ${customer.getName()}, id-${customer.getId()} was successfully added to branch '${this.name}'`);
+            return true
         }
     }
 
     addCustomerTransaction(id:string, amount:number):boolean {
-       let customer = this.customers.find(customer => customer.getId() === id);
+       let customer = this.findCustomer(id);
        if(customer) {
            customer.addTransaction(amount)
            return true
