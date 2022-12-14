@@ -1,7 +1,4 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.Branch = void 0;
-class Branch {
+export class Branch {
     constructor(name) {
         this.name = name;
         this.customers = [];
@@ -46,4 +43,3 @@ class Branch {
         }
     }
 }
-exports.Branch = Branch;
