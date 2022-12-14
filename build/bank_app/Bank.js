@@ -1,4 +1,7 @@
-export class Bank {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.Bank = void 0;
+class Bank {
     constructor(name) {
         this.name = name;
         this.branches = [];
@@ -87,3 +90,4 @@ export class Bank {
         return false;
     }
 }
+exports.Bank = Bank;

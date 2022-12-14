@@ -1,15 +1,16 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 // import { List } from "./types/ecommerce";
-import { Customer } from "./bank_app/Customer";
-import { Bank } from "./bank_app/Bank";
-import { Branch } from "./bank_app/Branch";
+const Customer_1 = require("./bank_app/Customer");
+const Bank_1 = require("./bank_app/Bank");
+const Branch_1 = require("./bank_app/Branch");
 //TASK1
-const arizonaBank = new Bank("Arizona");
-const westBranch = new Branch("West Branch");
-const sunBranch = new Branch("Sun Branch");
-const customer1 = new Customer("John");
-const customer2 = new Customer("Anna");
-const customer3 = new Customer("John");
+const arizonaBank = new Bank_1.Bank("Arizona");
+const westBranch = new Branch_1.Branch("West Branch");
+const sunBranch = new Branch_1.Branch("Sun Branch");
+const customer1 = new Customer_1.Customer("John");
+const customer2 = new Customer_1.Customer("Anna");
+const customer3 = new Customer_1.Customer("John");
 console.log(`START`);
 arizonaBank.addBranch(westBranch);
 arizonaBank.addBranch(sunBranch);
