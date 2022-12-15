@@ -8,42 +8,42 @@ import {Branch} from "./bank_app/Branch";
 
 import {UserStore} from "./types/interfaces/UserStore";
 
-//TAsk 1
-// const arizonaBank = new Bank("Arizona")
-// const westBranch = new Branch("West Branch")
-// const sunBranch = new Branch("Sun Branch")
-// const customer1 = new Customer("John")
-//
-// const customer2 = new Customer("Anna")
-//
-// const customer3 = new Customer("John")
-//
-// console.log('TASK 1')
-// console.log(`START`)
-// arizonaBank.addBranch(westBranch)
-// arizonaBank.addBranch(sunBranch)
-// arizonaBank.addBranch(westBranch)
-// console.log(`--------`)
-// arizonaBank.findBranchByName("bank")
-// arizonaBank.findBranchByName("sun")
-//
-// arizonaBank.addCustomer(westBranch, customer1)
-// arizonaBank.addCustomer(westBranch, customer3)
-// arizonaBank.addCustomer(sunBranch, customer1)
-// arizonaBank.addCustomer(sunBranch, customer2)
-// // //
-// console.log(`--------`)
-// arizonaBank.addCustomerTransaction(westBranch, customer1.getId(), 3000)
-// arizonaBank.addCustomerTransaction(westBranch, customer1.getId(), 2000)
-// arizonaBank.addCustomerTransaction(westBranch, customer2.getId(), 3000)
-//
-// customer1.addTransaction(-1000)
-// customer1.getBalance();
-// console.log(`--------`)
-// arizonaBank.listCustomers(westBranch, true)
-// arizonaBank.listCustomers(sunBranch,true)
-// console.log('END')
-// console.log(`--------`)
+// // TAsk 1
+const arizonaBank = new Bank("Arizona")
+const westBranch = new Branch("West Branch")
+const sunBranch = new Branch("Sun Branch")
+const customer1 = new Customer("John")
+
+const customer2 = new Customer("Anna")
+
+const customer3 = new Customer("John")
+
+console.log('TASK 1')
+console.log(`START`)
+arizonaBank.addBranch(westBranch)
+arizonaBank.addBranch(sunBranch)
+arizonaBank.addBranch(westBranch)
+console.log(`--------`)
+arizonaBank.findBranchByName("bank")
+arizonaBank.findBranchByName("sun")
+
+arizonaBank.addCustomer(westBranch, customer1)
+arizonaBank.addCustomer(westBranch, customer3)
+arizonaBank.addCustomer(sunBranch, customer1)
+arizonaBank.addCustomer(sunBranch, customer2)
+// //
+console.log(`--------`)
+arizonaBank.addCustomerTransaction(westBranch, customer1.getId(), 3000)
+arizonaBank.addCustomerTransaction(westBranch, customer1.getId(), 2000)
+arizonaBank.addCustomerTransaction(westBranch, customer2.getId(), 3000)
+
+customer1.addTransaction(-1000)
+customer1.getBalance();
+console.log(`--------`)
+arizonaBank.listCustomers(westBranch, true)
+arizonaBank.listCustomers(sunBranch,true)
+console.log('END')
+console.log(`--------`)
 // console.log('TASK 2')
 
 
@@ -107,7 +107,7 @@ async function app() {
         return users.find(user => user.email === email)
     }
     const foundUser = findUserByEmail("john@mail.com")
-    // console.log(foundUser)
+    console.log(foundUser)
 
     const findProductsByText = (search:string) => {
         return products.filter(products => products.title.toLowerCase().includes(search.toLowerCase()))
@@ -115,25 +115,15 @@ async function app() {
 
     // console.log(products)
     const foundProducts = findProductsByText("shirt")
-    console.log(foundProducts) //expect to see an array of all found products
+    console.log(users);
+    // console.log(foundProducts) //expect to see an array of all found products
 
     // console.log(users)
 }
 
 app()
 
-//
 
-//
-// /** find user by email.
-//  * Take a parameter of type string.
-//  * Return a found user or null*/
-//expect to see user with email "john@mail.com" in the console
-//
-// /** Find all products with titles matched the search, case insensitive.
-//  * Take a parameter of type string.
-//  * Return an array
-//  */
 
 //
 
@@ -142,4 +132,4 @@ app()
 //
 
 //
-// console.log(users) // expect too see 2 more users added in the end of array
+console.log(users) // expect to see 2 more users added in the end of array

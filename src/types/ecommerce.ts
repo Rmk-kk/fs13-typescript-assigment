@@ -43,7 +43,6 @@ export class List<T extends Entity> extends Array<T> {
         function doesExist (array:T[], id:number) {
             return array.some(item => id === item.id)
         }
-
         if(items.map(item => doesExist(this, item.id)).includes(true)) {
             return 0
         } else {

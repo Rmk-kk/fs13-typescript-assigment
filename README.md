@@ -1,109 +1,162 @@
-# TypeScript Assignment
+# TypeScript Assigment
 
-- Complete two challenges: banking application & fetching e-commerce data.
-- Check the scripts in `package.json` to run the suitable command for each challenge
+![Generic badge](https://img.shields.io/badge/JS-ES5-yellow.svg)
+![Generic badge](https://img.shields.io/badge/TS-v.4.9-blue.svg)
 
-## Create a simple banking application
+## Technologies
 
-Implement the following classes, interface, and codes (you can decide which file to put each type, but do not write all the types in `index.ts` or `bank.ts`). All the properties must be kept private, while you can make the methods as public
+* API - [Fake Store API](https://fakeapi.platzi.com/)
+* TypeScript
+* JS
+    * Async/ Await
+    * Classes
+    * Methods Map, Find, Sort, Filter, Includes + Custom
 
-1. Class Bank
+### Task 1 - Bank Logic 
 
-   - It has two properties: `name` (string), `branches` (array of type Branch[])
+<details >
+<summary>Open Result</summary>
 
-   - A constructor that takes an argumment name (string). It initialises name and instantiates branches as empty array.
+``` bash
+TASK 1
+START
+Branch 'West Branch' was created successfully.
+Branch 'Sun Branch' was created successfully.
+Branch 'West Branch' already exist
+--------
+No results found with your request 'bank'
+We found next branches with your request 'sun' : 'Sun Branch'
+Customer John, id-419 was successfully added to branch 'West Branch'
+Customer John, id-13 was successfully added to branch 'West Branch'
+Customer John, id-419 was successfully added to branch 'Sun Branch'
+--------
+Customer John(id: 419) transactions:
+'Amount: 3000, Date: 17:27, 15.12.2022'
+'Amount: 2000, Date: 17:27, 15.12.2022'
+'Amount: -1000, Date: 17:27, 15.12.2022'
+Customer John(id: 13): 'No transactions'
+Customer John(id: 419) transactions:
+'Amount: 3000, Date: 17:27, 15.12.2022'
+'Amount: 2000, Date: 17:27, 15.12.2022'
+'Amount: -1000, Date: 17:27, 15.12.2022'
+Customer Anna(id: 361): 'No transactions'
+END
+```
+</details>
 
-   - And five methods:
+### Task 2 - Classes in TS with API
 
-   - `addBranch()`, has one parameter of type `Branch` and returns a boolean. This function will add branch into array `branches`. It returns true if the branch was added successfully or false otherwise. Each branch is supposed to be added once only.
+<details >
+<summary>Open Result</summary>
 
-   - `addCustomer()`, has 2 parameters: branch and customer and returns a boolean. It returns true if the customer is added successfully to the branch of the bank or false otherwise. Each customer can be added only once to a branch.
+``` bash
+0
+1
+{
+  id: 1,
+  email: 'john@mail.com',
+  password: 'changeme',
+  name: 'Jhon',
+  role: 'customer',
+  avatar: 'https://api.lorem.space/image/face?w=640&h=480&r=2930'
+}
+List(5) [
+  {
+    id: 100,
+    email: 'henry@gmail.com',
+    password: 'henry',
+    name: 'Henry',
+    role: 'customer',
+    avatar: 'https://api.lorem.space/image/face?w=640&h=480&r=6751'
+  },
+  {
+    id: 90,
+    email: 'william@gmail.com',
+    password: 'william',
+    name: 'William',
+    role: 'customer',
+    avatar: 'https://api.lorem.space/image/face?w=640&h=480&r=6751'
+  },
+  {
+    id: 3,
+    email: 'admin@mail.com',
+    password: 'admin123',
+    name: 'Admin',
+    role: 'admin',
+    avatar: 'https://api.lorem.space/image/face?w=640&h=480&r=4'
+  },
+  {
+    id: 2,
+    email: 'maria@mail.com',
+    password: '12345',
+    name: 'Maria',
+    role: 'customer',
+    avatar: 'https://api.lorem.space/image/face?w=640&h=480&r=8914'
+  },
+  {
+    id: 1,
+    email: 'john@mail.com',
+    password: 'changeme',
+    name: 'Jhon',
+    role: 'customer',
+    avatar: 'https://api.lorem.space/image/face?w=640&h=480&r=2930'
+  }
+]
+```
+</details>
 
-   - `addCustomerTransaction()`, has three parameters: branch, customer id, amount of transaction and returns a boolean. It returns true if the customers transaction is added successfully or false otherwise.
+## Project Structure
 
-   - `findBranchByName()`, has one parameter of type string (branch's name) and returns list of matched branches or null otherwise.
+<details>
+<summary>Open Project Structure</summary>
 
-   - `checkBranch()`, has one parameter of type Branch and returns true if branch belongs to bank or false otherwise.
-
-   - `listCustomers()`, has two parameters, branch and boolean and returns a boolean. Return true if the branch exists or false otherwise. This method prints out a list of customers with transaction details if second parameter is true.
-
-2. Class Branch
-
-   - It has two properties, a string called `name` and an array called `customers`. Array `customers` should hold objects of type Customer.
-
-   - A constructor that takes a string (name of the branch). It initialises name and instantiates customers as an emty array.
-
-   - And 5 methods, they are (their functions are in their names):
-
-      - `getName()`, getter for name.
-
-      - `getCustomers()`, getter for customers.
-
-      - `addCustomer()`, has a parameter of type Customer and returns a boolean. Returns true if the customer was added successfully or false otherwise (each customer should be added once only).
-
-      - `addCustomerTransaction()`, has a parameter of type string (id of customer), a number (for transaction) and returns a boolean. Returns true if the customers transaction is added successfully or false otherwise.
-
-      - `findCustomer()`, has one parameter of type string (`id` of customer) and returns a customer. Return the customer if they exist, null otherwise.
-
-3. Class Customer
-
-   - It has 3 properties, string `name`, string `id`, and an array that holds objects of type Transaction called `transactions`.
-
-   - A constructor that takes only a parameter of type string (name of customer). It initialises name and instantiates transactions as empty array. `id` should be initialized to be an unique string.
-
-   - And 5 methods:
-
-      - `getName()`, getter for name.
-
-      - `getId()`, getter for id.
-
-      - `getTransactions()`, getter for transactions.
-
-      - `getBalance()`, return the current balance from the transactions.
-
-      - `addTransaction()`, has one parameter of type number and return true if transaction is added sucessfully. You need to make sure that balance cannot be negative. This function should add the successful transaction into transactions array.
-
-4. Interface Transaction
-
-<<<<<<< HEAD
-   - It has 2 properties, a number `amount`, and a Date called `date`. `date` refers to the time that transaction has been created.
-=======
-    - It has 2 properties, a number `amount`, and a Date called `date`. `date` refers to the time that transaction has been created.
->>>>>>> 77658ed3e4a0ed3abd3d54d0a9eb5371659a199b
-
-Run the following codes in `bank.ts`and share your results and findings in the Slack channel
+``` bash
+│   .gitignore
+│   package-lock.json
+│   package.json
+│   README.md
+│   tsconfig.json
+│
+├───build
+│   │   index.js
+│   │
+│   ├───bank_app
+│   │       Bank.js
+│   │       Branch.js
+│   │       Customer.js
+│   │       Transaction.js
+│   │
+│   └───types
+│       │   ecommerce.js
+│       │
+│       └───interfaces
+│               entity.js
+│               ProductStore.js
+│               StoreError.js
+│               UserStore.js
+└───src
+    │   index.ts
+    │
+    ├───bank_app
+    │       Bank.ts
+    │       Branch.ts
+    │       Customer.ts
+    │       Transaction.ts
+    │
+    └───types
+        │   ecommerce.ts
+        │
+        └───interfaces
+                entity.ts
+                ProductStore.ts
+                StoreError.ts
+                UserStore.ts
 
 ```
-const arizonaBank = new Bank("Arizona")
-const westBranch = new Branch("West Branch")
-const sunBranch = new Branch("Sun Branch")
-const customer1 = new Customer("John")
-const customer2 = new Customer("Anna")
-const customer3 = new Customer("John")
+</details>
 
-arizonaBank.addBranch(westBranch)
-arizonaBank.addBranch(sunBranch)
-arizonaBank.addBranch(westBranch) 
+## Getting Started
 
-arizonaBank.findBranchByName("bank")
-arizonaBank.findBranchByName("sun")
+Clone the repository from GitHub with `git clone `. <br>
+Check repository on `https://github.com/Rmk-kk/fs13-typescript-assigment`
 
-arizonaBank.addCustomer(westBranch, customer1)
-arizonaBank.addCustomer(westBranch, customer3)
-arizonaBank.addCustomer(sunBranch, customer1)
-arizonaBank.addCustomer(sunBranch, customer2)
-
-arizonaBank.addCustomerTransaction(westBranch, customer1.getId, 3000)
-arizonaBank.addCustomerTransaction(westBranch, customer1.getId, 2000)
-arizonaBank.addCustomerTransaction(westBranch, customer2.getId, 3000)
-
-customer1.addTransactions(-1000)
-console.log(customer1.getBalance())
-console.log(arizonaBank.listCustomers(westBranch, true))
-console.log(arizonaBank.listCustomers(sunBranch,true))
-```
-
-## Fetch E-commerce data
-
-Explore the codes in `index.ts` and folder `types`. Complete the codes or fix bugs
-if needed to producce the expected result according to the codes in `index.ts`.
