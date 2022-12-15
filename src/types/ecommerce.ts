@@ -30,9 +30,9 @@ export class List<T extends Entity> extends Array<T> {
     reference to the same array*/
     sortList (order: 'asc' | 'desc' = 'asc') {
         if(order === 'desc') {
-            return this.sort((first, second) => second.id - first.id)
+            this.sort((first, second) => second.id - first.id)
         } else if(order === 'asc') {
-            return this.sort((first, second) => first.id - second.id)
+            this.sort((first, second) => first.id - second.id)
         }
     }
 
@@ -40,16 +40,18 @@ export class List<T extends Entity> extends Array<T> {
     id does not exist. Only add all the items to the array if every item satisfies the condition.
     Return 1 if can push all new items to the array, otherwise return 0 */
     push(...items: T[]): number {
-        // items.map(item => {
-        //     if(this.find(old => old.id === item.id)) {
-        //         return console.log(`Same id: ${item.id}`)
-        //     }
-        //     for(let i = 0; i < items.length; i++) {
-        //         this[this.length] = items[i]
-        //     }
-        //     return 1
-        // })
-        // return 0
+        function doesExist (array:T[], id:number) {
+            return array.some(item => id === item.id)
+        }
+
+        if(items.map(item => doesExist(this, item.id)).includes(true)) {
+            return 0
+        } else {
+            for(let i = 0; i < items.length; i++) {
+                this[this.length] = items[i]
+            }
+            return 1
+        }
     }
 }
 

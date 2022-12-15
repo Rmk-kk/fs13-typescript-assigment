@@ -60,6 +60,7 @@ const users = new List<UserStore>();
 console.log('------START--------')
 async function app() {
     await users.fetchAll("https://api.escuelajs.co/api/v1/users?limit=3")
+    await products.fetchAll("https://api.escuelajs.co/api/v1/products");
     const testPush1 = users.push(
         {
             id: 1,
@@ -78,53 +79,62 @@ async function app() {
             avatar: "https://api.lorem.space/image/face?w=640&h=480&r=6751"
         }
     )
-    // const testPush2 = users.push(
-    //     {
-    //         id: 90,
-    //         email: "william@gmail.com",
-    //         password: "william",
-    //         name: "William",
-    //         role: "customer",
-    //         avatar: "https://api.lorem.space/image/face?w=640&h=480&r=6751"
-    //     },
-    //     {
-    //         id: 100,
-    //         email: "henry@gmail.com",
-    //         password: "henry",
-    //         name: "Henry",
-    //         role: "customer",
-    //         avatar: "https://api.lorem.space/image/face?w=640&h=480&r=6751"
-    //     }
-    // )
+    const testPush2 = users.push(
+        {
+            id: 90,
+            email: "william@gmail.com",
+            password: "william",
+            name: "William",
+            role: "customer",
+            avatar: "https://api.lorem.space/image/face?w=640&h=480&r=6751"
+        },
+        {
+            id: 100,
+            email: "henry@gmail.com",
+            password: "henry",
+            name: "Henry",
+            role: "customer",
+            avatar: "https://api.lorem.space/image/face?w=640&h=480&r=6751"
+        }
+    )
+    //  //Expect to see users array in new order of id decreasing
+    users.sortList('desc');
 
-    // console.log(testPush1) // expect to see 0
-    // console.log(testPush2) // expect to see 1
-    console.log(users)
+    console.log(testPush1) // expect to see 0
+    console.log(testPush2) // expect to see 1
+
+    const findUserByEmail = (email:string) => {
+        return users.find(user => user.email === email)
+    }
+    const foundUser = findUserByEmail("john@mail.com")
+    // console.log(foundUser)
+
+    const findProductsByText = (search:string) => {
+        return products.filter(products => products.title.toLowerCase().includes(search.toLowerCase()))
+    }
+
+    // console.log(products)
+    const foundProducts = findProductsByText("shirt")
+    console.log(foundProducts) //expect to see an array of all found products
+
+    // console.log(users)
 }
 
 app()
 
 //
-//  //Expect to see users array in new order of id decreasing
+
 //
 // /** find user by email.
 //  * Take a parameter of type string.
 //  * Return a found user or null*/
-// const findUserByEmail = (email) => {
-//     users.find(user => user.email === email)
-// }
-// const foundUser = findUserByEmail("john@mail.com")
-// console.log(foundUser) //expect to see user with email "john@mail.com" in the console
+//expect to see user with email "john@mail.com" in the console
 //
-// /** Find all products with titles matched the search, case insentitive.
+// /** Find all products with titles matched the search, case insensitive.
 //  * Take a parameter of type string.
 //  * Return an array
 //  */
-// const findProductsByText = (search) => {
-//     products.filter(products => products.title === search)
-// }
-// const foundProducts = findProductsByText("shirt")
-// console.log(foundProducts) //expect to see an array of all found products
+
 //
 
 //
