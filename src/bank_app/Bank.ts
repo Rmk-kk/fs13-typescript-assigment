@@ -9,13 +9,14 @@ export class Bank  {
 
     addBranch(branch:Branch):boolean  {
         if(this.checkBranch(branch)) {
-            console.log(`Branch ${branch.getName()} already exist`);
+            console.log(`Branch '${branch.getName()}' already exist`);
             return false
         }
         this.branches.push(branch);
         console.log(`Branch '${branch.getName()}' was created successfully.`)
         return true
     }
+
     addCustomer(branch:Branch, customer:Customer):boolean {
         if(this.checkBranch(branch)) {
             branch.addCustomer(customer);
@@ -70,24 +71,28 @@ export class Bank  {
     }
 
     listCustomers(branch:Branch, printList:boolean = false):boolean {
-        this.branches.find(existingBranch => {
-            if(existingBranch.getName() === branch.getName()) {
-                if(printList) {
-                    let customers = existingBranch.getCustomers();
-                    customers.map(customer => {
-                        if(customer.getTransactions().length > 0) {
-                            console.log(`Customer ${customer.getName()}(id: ${customer.getId()}) transactions: `)
-                            customer.getTransactions().map(transaction => {
-                                console.log(transaction)
-                            })
-                        } else {
-                            console.log(`Customer ${customer.getName()}(id: ${customer.getId()}): 'No transactions' `)
-                        }
-                    })
-                }
-                return true
+        if(this.checkBranch(branch)) {
+            if (printList) {
+                let customers = branch.getCustomers();
+                customers.map(customer => {
+                    if (customer.getTransactions().length > 0) {
+                        console.log(`Customer ${customer.getName()}(id: ${customer.getId()}) transactions: `);
+                        customer.getTransactions().map(transaction => {
+                            const day = transaction.date.getDate();
+                            const year = transaction.date.getFullYear();
+                            const month = transaction.date.getMonth() + 1;
+                            const hours = transaction.date.getHours();
+                            const minutes = transaction.date.getMinutes();
+                            console.log(`'Amount: ${transaction.amount}, Date: ${hours}:${minutes}, ${day}.${month}.${year}'`);
+                        });
+                    }
+                    else {
+                        console.log(`Customer ${customer.getName()}(id: ${customer.getId()}): 'No transactions' `);
+                    }
+                });
             }
-        })
+            return true;
+        }
         return false
     }
 }

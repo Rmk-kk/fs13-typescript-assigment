@@ -30,7 +30,7 @@ export class Customer {
         if(currBalance < 0) {
             currBalance = 0;
         }
-        console.log(`Balance: ${currBalance}`);
+        console.log(`${this.name}'s(id:${this.id}) balance: ${currBalance}`);
         return currBalance;
     }
 
