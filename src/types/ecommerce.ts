@@ -2,12 +2,6 @@ import { Entity } from "./interfaces/entity"
 import {StoreError} from "./interfaces/StoreError";
 
 
-interface Error {
-    'statusCode' : number,
-    'message' : string,
-}
-
-
 export class List<T extends Entity> extends Array<T> {
     constructor() {
         super();
